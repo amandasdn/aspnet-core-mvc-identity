@@ -2,55 +2,266 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
+
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
 button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+    font-size: 1rem;
+    line-height: inherit;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 30px;
+    background: #eee;
 }
+
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  line-height: 60px; /* Vertically center the text there */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 15;
+}
+
+nav#navmenu {
+    bottom: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    padding-top: 70px;
+    width: 250px;
+    background: #32373a;
+    z-index: 10;
+    margin: 0;
+}
+
+    nav#navmenu ul {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+        nav#navmenu ul li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+            nav#navmenu ul li a {
+                display: block;
+                width: 100%;
+                padding: 14px 10px;
+                margin-bottom: 1px;
+                font-size: 13px;
+                color: #ffffff95;
+                font-weight: 600;
+                text-decoration: none;
+            }
+
+                nav#navmenu ul li a i.fa {
+                    width: 24px;
+                    text-align: center;
+                    font-size: 16px;
+                    color: white;
+                    margin-right: 5px;
+                    color: #e74c3c;
+                }
+
+                nav#navmenu ul li a:hover {
+                    background: #ffffff09;
+                }
+
+                nav#navmenu ul li a.active {
+                    background: #e74c3c;
+                    border-left: 0;
+                    border-right: 0;
+                    color: white;
+                }
+
+                    nav#navmenu ul li a.active i.fa {
+                        color: white;
+                    }
+
+    nav#navmenu footer {
+        position: absolute;
+        bottom: 15px;
+        text-align: center;
+        width: 100%;
+        color: #ffffff40;
+        font-size: 15px;
+    }
+
+section.conteudo {
+    margin-top: 60px;
+    margin-left: 250px;
+    padding: 15px;
+}
+
+header {
+    background: #2d3133;
+    border-bottom: 1px solid #00000030;
+    display: block;
+    height: 60px;
+}
+
+    header #megaestoque a {
+        width: 250px;
+        text-align: center;
+        color: #ffffff95;
+        line-height: 60px;
+        font-size: 20px;
+        text-transform: uppercase;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        float: left;
+        text-decoration: none;
+        transition: .2s all;
+    }
+
+        header #megaestoque a:hover {
+            color: #fff;
+        }
+
+    header #navlogin {
+        float: right;
+        width: 500px;
+        text-align: right;
+        margin-right: 20px;
+    }
+
+        header #navlogin ul {
+            display: inline-block;
+            padding-top: 15px;
+        }
+
+            header #navlogin ul li {
+                display: inline-block;
+            }
+
+                header #navlogin ul li a, header #navlogin ul li button {
+                    text-decoration: none;
+                    display: inline-block;
+                    padding: 4px 10px;
+                    color: #ffffff;
+                    background: #ffffff05;
+                    border: 1px solid #ffffff;
+                    border-radius: 0;
+                    font-size: 13px;
+                    float: left;
+                    margin-left: 8px !important;
+                }
+
+                    header #navlogin ul li a.nav-usuariologado {
+                        background: #ffffff26;
+                        border: 1px solid #ffffff15;
+                    }
+
+                    header #navlogin ul li a.nav-entrar {
+                        background: #2bb5af80;
+                        border: 1px solid #1d736b61;
+                    }
+
+                    header #navlogin ul li button.nav-logout {
+                        background: #d9534f80;
+                        border: 1px solid #a0333096;
+                        margin: 0;
+                    }
+
+                header #navlogin ul li form {
+                    display: inline-block;
+                }
+
+section.conteudo h1 {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    border-left: 2px solid rgb(231, 76, 60);
+    padding: 5px 5px 6px 15px;
+    margin-bottom: 15px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+section.conteudo .box {
+    background: white;
+    padding: 15px;
+    border: 1px solid #ccc;
+    color: #6f7b8a;
+    margin-bottom: 15px;
+}
+
+section.conteudo p:last-child {
+    margin-bottom: 0;
+}
+
+.btn {
+    border-radius: 0;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
+p.acoes {
+    float: right;
+    text-align: right;
+    margin-top: -50px;
+}
+
+td.acoes {
+    text-align: center;
+}
+
+    td.acoes .btn {
+        margin: 0 3px;
+        font-size: 11px;
+        padding: 2px 8px;
+    }
+
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col, .col-auto, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm, .col-sm-auto, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md, .col-md-auto, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg, .col-lg-auto, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl, .col-xl-auto {
+    float: left;
+}
+
+::selection {
+    background-color: #222;
+    color: white;
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ControleEstoque</title>
+    <title>@ViewData["Title"] - Mega Estoque</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -13,14 +13,31 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
               crossorigin="anonymous"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
     </environment>
+    <link rel="stylesheet" href="~/css/table.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/pm.css" />
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
 </head>
 <body>
+
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
+        <div id="megaestoque">
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="btn-nav-dashboard">
+                @*Mega <strong>Estoque</strong>*@
+                <img src="~/img/megaestoque.png" />
+            </a>
+        </div>
+        <div id="navlogin">
+            <partial name="_LoginPartial" />
+        </div>
+    </header>
+
+    @*<header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ControleEstoque</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -37,25 +54,70 @@
                         </li>
                     </ul>
                 </div>
+            </nav>
+        </header>*@
+
+    <nav id="navmenu">
+        <ul>
+            <li>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="btn-nav-dashboard">
+                    <i class="fa fa-home mr-15"></i> Dashboard
+                </a>
+            </li>
+            <li>
+                <a asp-area="" asp-controller="Produtos" asp-action="Index" class="btn-nav-estoque">
+                    <i class="fa fa-layer-group mr-15"></i> Estoque de Produtos
+                </a>
+            </li>
+            <li>
+                <a asp-area="" asp-controller="Movimentacao" asp-action="Index" class="btn-nav-movimentacao">
+                    <i class="fa fa-shipping-fast mr-15"></i> Movimentação
+                </a>
+            </li>
+            @*<li>
+                <a asp-area="" asp-controller="Home" asp-action="Produtos" class="btn-nav-movimentacao">
+                    <i class="fa fa-shopping-bag mr-15"></i> Produtos
+                </a>
+            </li>*@
+            <li>
+                <a asp-area="" asp-controller="Clientes" asp-action="Index" class="btn-nav-clientes">
+                    <i class="fa fa-building mr-15"></i> Clientes
+                </a>
+            </li>
+            <li>
+                <a asp-area="" asp-controller="Fornecedores" asp-action="Index" class="btn-nav-fornecedores">
+                    <i class="fa fa-handshake mr-15"></i> Fornecedores
+                </a>
+            </li>
+        </ul>
+
+
+        <footer>
+            <div class="text-center">
+                &copy; @DateTime.Now.Year - Amanda Nascimento
             </div>
-        </nav>
-    </header>
-    <div class="container">
+        </footer>
+    </nav>
+
+    <section class="conteudo">
+
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2019 - ControleEstoque - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+    </section>
+
+
+
+
+
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+        <script src="~/js/jquery.dataTables.min.js"></script>
+        <script src="~/js/dataTables.bootstrap4.min.js"></script>
     </environment>
     <environment exclude="Development">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
@@ -71,7 +133,23 @@
                 integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
         </script>
     </environment>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/sweetalert.min.js"></script>
+
+    <script>
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+    </script>
 
     @RenderSection("Scripts", required: false)
 </body>
