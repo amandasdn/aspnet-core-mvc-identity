@@ -1,0 +1,115 @@
+﻿@model ControleEstoque.Models.Fornecedor
+
+@{
+    ViewData["Title"] = "Dados do Fornecedor #" + @Model.IDFornecedor;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Dados do Fornecedor</h1>
+
+<div class="box">
+    <dl class="row mb-0">
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.IDFornecedor)
+        </dt>
+        <dd class="col-sm-8">
+            #@Html.DisplayFor(model => model.IDFornecedor)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.NomeFantasia)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.NomeFantasia)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.RazaoSocial)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.RazaoSocial)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.CNPJ)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.CNPJ)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.DataCadastro)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.DataCadastro)
+        </dd>
+    </dl>
+
+    <hr />
+
+    <dl class="row mb-0">
+
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Endereco)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Endereco)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Numero)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Numero)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Complemento)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Complemento)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Bairro)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Bairro)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Cidade)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.UF)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.UF)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.CEP)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.CEP)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index" class="btn btn-secondary mr-10">Voltar para a lista</a>
+    <a asp-action="Editar" class="btn btn-warning" asp-route-id="@Model.IDFornecedor">Editar</a>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $(".btn-nav-fornecedores").addClass(" active");
+        });
+    </script>
+}

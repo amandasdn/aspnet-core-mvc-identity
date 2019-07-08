@@ -3,63 +3,20 @@ using System;
 using ControleEstoque.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ControleEstoque.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190708154508_Fornecedor")]
+    partial class Fornecedor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
-
-            modelBuilder.Entity("ControleEstoque.Models.Cliente", b =>
-                {
-                    b.Property<int>("IDCliente")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Bairro")
-                        .IsRequired();
-
-                    b.Property<string>("CEP")
-                        .IsRequired();
-
-                    b.Property<string>("CNPJ")
-                        .IsRequired();
-
-                    b.Property<string>("Cidade")
-                        .IsRequired();
-
-                    b.Property<string>("Complemento");
-
-                    b.Property<DateTime>("DataCadastro");
-
-                    b.Property<string>("Email");
-
-                    b.Property<string>("Endereco")
-                        .IsRequired();
-
-                    b.Property<string>("NomeFantasia")
-                        .IsRequired();
-
-                    b.Property<string>("Numero")
-                        .IsRequired();
-
-                    b.Property<string>("RazaoSocial")
-                        .IsRequired();
-
-                    b.Property<string>("Telefone");
-
-                    b.Property<string>("UF")
-                        .IsRequired();
-
-                    b.HasKey("IDCliente");
-
-                    b.ToTable("Cliente");
-                });
 
             modelBuilder.Entity("ControleEstoque.Models.Fornecedor", b =>
                 {
@@ -104,29 +61,6 @@ namespace ControleEstoque.Data.Migrations
                     b.HasKey("IDFornecedor");
 
                     b.ToTable("Fornecedor");
-                });
-
-            modelBuilder.Entity("ControleEstoque.Models.Produto", b =>
-                {
-                    b.Property<int>("IDProduto")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("DataCadastro");
-
-                    b.Property<string>("Descricao");
-
-                    b.Property<string>("Imagem");
-
-                    b.Property<string>("Nome")
-                        .IsRequired();
-
-                    b.Property<decimal>("PrecoUnitario");
-
-                    b.Property<int>("Quantidade");
-
-                    b.HasKey("IDProduto");
-
-                    b.ToTable("Produto");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

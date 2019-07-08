@@ -1,0 +1,61 @@
+﻿@model ControleEstoque.Models.Fornecedor
+
+@{
+    ViewData["Title"] = "Excluir Fornecedor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Excluir</h1>
+
+<p>Tem certeza que deseja excluir este fornecedor?</p>
+
+<div class="box">
+    <dl class="row mb-0">
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.IDFornecedor)
+        </dt>
+        <dd class="col-sm-8">
+            #@Html.DisplayFor(model => model.IDFornecedor)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.NomeFantasia)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.NomeFantasia)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.RazaoSocial)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.RazaoSocial)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.CNPJ)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.CNPJ)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.DataCadastro)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.DataCadastro)
+        </dd>
+
+    </dl>
+
+</div>
+
+<form asp-action="Excluir">
+    <input type="hidden" asp-for="IDFornecedor" />
+    <input type="submit" value="Excluir" class="btn btn-danger mr-10" />
+    <a asp-action="Index" class="btn btn-secondary mr-10">Voltar para a lista</a>
+</form>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $(".btn-nav-fornecedores").addClass(" active");
+        });
+    </script>
+}
