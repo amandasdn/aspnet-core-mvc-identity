@@ -1,11 +1,11 @@
 ﻿@model ControleEstoque.Models.Cliente
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editar dados do Cliente #" + Model.IDCliente;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Editar dados do Cliente</h1>
+<h1>@ViewData["Title"]</h1>
 
 <form asp-action="Editar">
     <div class="box">

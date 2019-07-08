@@ -1,11 +1,11 @@
 ﻿@model ControleEstoque.Models.Cliente
 
 @{
-    ViewData["Title"] = "Excluir Cliente";
+    ViewData["Title"] = "Excluir Cliente #" + Model.IDCliente;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Excluir</h1>
+<h1>@ViewData["Title"]</h1>
 
 <p>Tem certeza que deseja excluir este cliente?</p>
 

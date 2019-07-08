@@ -1,11 +1,11 @@
 ﻿@model ControleEstoque.Models.Cliente
 
 @{
-    ViewData["Title"] = "Dados do Cliente #" + @Model.IDCliente;
+    ViewData["Title"] = "Dados do Cliente #" + Model.IDCliente;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Dados do Cliente</h1>
+<h1>@ViewData["Title"]</h1>
 
 <div class="box">
     <dl class="row mb-0">

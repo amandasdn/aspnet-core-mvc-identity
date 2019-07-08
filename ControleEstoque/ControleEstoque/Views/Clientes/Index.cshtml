@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<ControleEstoque.Models.Cliente>
 
 @{
-    ViewData["Title"] = "Clientees";
+    ViewData["Title"] = "Clientes";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Lista de Clientees</h1>
+<h1>@ViewData["Title"]</h1>
 
 <p class="acoes">
     <a asp-action="Criar" class="btn btn-primary">Novo Cliente</a>
