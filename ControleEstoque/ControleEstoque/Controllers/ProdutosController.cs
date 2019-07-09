@@ -195,7 +195,16 @@ namespace ControleEstoque.Controllers
         public async Task<IActionResult> ExcluirConfirmar(int id)
         {
             var produto = await _context.Produto.FindAsync(id);
+
+            List<Movimentacao> movimentacoes = _context.Movimentacao.Where(x => x.IDProduto == produto.IDProduto).ToList();
+
+            foreach (var mov in movimentacoes)
+            {
+                _context.Movimentacao.Remove(mov);
+            }
+
             _context.Produto.Remove(produto);
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index), new { @status = "excluido" });
         }

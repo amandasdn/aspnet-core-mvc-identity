@@ -8,6 +8,7 @@
 <h1>@ViewData["Title"]</h1>
 
 <p>Tem certeza que deseja excluir este produto?</p>
+<p><strong>Nota:</strong> se você excluir este produto, todas as movimentações referente à este mesmo serão excluídas do sistema.</p>
 
 <div class="box">
     <div class="col-md-9">
@@ -24,14 +25,6 @@
             <dd class="col-sm-8">
                 @Html.DisplayFor(model => model.Categoria)
             </dd>
-
-            @if (!string.IsNullOrEmpty(Model.Descricao))
-            {
-                <dt class="col-sm-4">
-                    @Html.DisplayNameFor(model => model.Descricao)
-                </dt>
-                <dd class="col-sm-8" style="white-space: pre-line;">@Html.DisplayFor(model => model.Descricao)</dd>
-            }
 
         </dl>
 

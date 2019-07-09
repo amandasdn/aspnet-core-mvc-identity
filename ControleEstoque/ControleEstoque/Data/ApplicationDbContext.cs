@@ -16,5 +16,6 @@ namespace ControleEstoque.Data
         public DbSet<ControleEstoque.Models.Fornecedor> Fornecedor { get; set; }
         public DbSet<ControleEstoque.Models.Produto> Produto { get; set; }
         public DbSet<ControleEstoque.Models.Cliente> Cliente { get; set; }
+        public DbSet<ControleEstoque.Models.Movimentacao> Movimentacao { get; set; }
     }
 }

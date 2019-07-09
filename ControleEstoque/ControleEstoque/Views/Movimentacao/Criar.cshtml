@@ -1,0 +1,125 @@
+﻿@model ControleEstoque.Models.Movimentacao
+
+@{
+    ViewData["Title"] = "Criar Movimentação";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="Criar">
+    <div class="box">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="col-md-4 form-group">
+
+            <label class="col-md-12" asp-for="Tipo">Tipo de Movimentação</label>
+
+            <div class="col-md-6 form-check p-0 pr-5">
+                <div class="form-control pl-30">
+                    <input asp-for="Tipo" name="Tipo" class="form-check-input" type="radio" value="0" id="Entrada">
+                    <label asp-for="Tipo" class="form-check-label" for="Entrada" style="width:100%">
+                        Entrada
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-md-6 form-check p-0 pl-5">
+                <div class="form-control pl-30">
+                    <input asp-for="Tipo" name="Tipo" class="form-check-input" type="radio" value="1" id="Saida">
+                    <label asp-for="Tipo" class="form-check-label" for="Saida" style="width:100%">
+                        Saída
+                    </label>
+                </div>
+            </div>
+
+            <span asp-validation-for="Tipo" class="text-danger"></span>
+        </div>
+        <div class="col-md-3 form-group">
+            <label asp-for="Quantidade" class="control-label"></label>
+            <input asp-for="Quantidade" class="form-control" />
+            <span asp-validation-for="Quantidade" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-5">
+            <label class="pb-20"></label>
+            <p class="text-danger">@TempData["ErroQuantidade"]</p>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <hr />
+
+        <div class="col-md-6 form-group">
+            <label asp-for="IDProduto" class="control-label"></label>
+            <select asp-for="IDProduto" class="form-control js-select" asp-items="@ViewBag.Produtos">
+                <option selected disabled></option>
+            </select>
+            <span asp-validation-for="IDProduto" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6 form-group" id="selectFornecedor">
+            <label asp-for="IDFornecedor" class="control-label">Fornecedor</label>
+            <select asp-for="IDFornecedor" class="form-control js-select" asp-items="@ViewBag.Fornecedores">
+                <option selected disabled></option>
+            </select>
+            <span asp-validation-for="IDFornecedor" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6 form-group" id="selectCliente">
+            <label asp-for="IDCliente" class="control-label">Cliente</label>
+            <select asp-for="IDCliente" class="form-control js-select" asp-items="@ViewBag.Clientes">
+                <option selected disabled></option>
+            </select>
+            <span asp-validation-for="IDCliente" class="text-danger"></span>
+        </div>
+
+        <div class="clearfix"></div>
+
+    </div>
+
+    <div>
+        <input type="submit" value="Salvar" class="btn btn-success mr-10" />
+        <a asp-action="Index" class="btn btn-secondary">Voltar para a lista</a>
+    </div>
+
+</form>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $(document).ready(function () {
+            $(".btn-nav-movimentacao").addClass(" active");
+
+            $('.js-select').select2();
+
+            $("input[name='Tipo']").change(function () {
+                mudarClienteFornecedor();
+            });
+
+            mudarClienteFornecedor();
+
+            function mudarClienteFornecedor() {
+                var valor = $("input[name='Tipo']:checked").val();
+
+                switch (valor) {
+                    case '0':
+                        $("#selectFornecedor").show();
+                        $("#selectCliente").hide();
+                        break;
+                    case '1':
+                        $("#selectCliente").show();
+                        $("#selectFornecedor").hide();
+                        break;
+                    default:
+                        $("#selectFornecedor").hide();
+                        $("#selectCliente").hide();
+                        break;
+                }
+            }
+
+        });
+    </script>
+}

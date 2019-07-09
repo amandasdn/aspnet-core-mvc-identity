@@ -23,6 +23,16 @@
                 @Html.DisplayFor(model => model.Categoria)
             </dd>
 
+            @if (User.Identity.IsAuthenticated)
+            {
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.DataCadastro)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.DataCadastro)
+                </dd>
+            }
+
         </dl>
 
         @if (!string.IsNullOrEmpty(Model.Descricao))
@@ -53,12 +63,7 @@
             <dd class="col-sm-8">
                 @Html.DisplayFor(model => model.Quantidade)
             </dd>
-            @*<dt class="col-sm-4">
-                    @Html.DisplayNameFor(model => model.DataCadastro)
-                </dt>
-                <dd class="col-sm-8">
-                    @Html.DisplayFor(model => model.DataCadastro)
-                </dd>*@
+
         </dl>
     </div>
 
@@ -75,7 +80,11 @@
 
 <div>
     <a asp-action="Index" class="btn btn-secondary mr-10">Voltar para a lista</a>
-    <a asp-action="Editar" class="btn btn-warning" asp-route-id="@Model.IDProduto">Editar</a>
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <a asp-action="Editar" class="btn btn-warning" asp-route-id="@Model.IDProduto">Editar</a>
+    }
 </div>
 
 @section Scripts {
