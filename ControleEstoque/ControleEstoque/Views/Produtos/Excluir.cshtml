@@ -1,0 +1,86 @@
+﻿@model ControleEstoque.Models.Produto
+
+@{
+    ViewData["Title"] = "Excluir Produto #" + Model.IDProduto;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Tem certeza que deseja excluir este produto?</p>
+
+<div class="box">
+    <div class="col-md-9">
+        <dl class="row">
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Categoria)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Categoria)
+            </dd>
+
+            @if (!string.IsNullOrEmpty(Model.Descricao))
+            {
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Descricao)
+                </dt>
+                <dd class="col-sm-8" style="white-space: pre-line;">@Html.DisplayFor(model => model.Descricao)</dd>
+            }
+
+        </dl>
+
+        <hr />
+
+        <dl class="row">
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Quantidade)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Quantidade)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.PrecoUnitario)
+            </dt>
+            <dd class="col-sm-8">
+                R$ @Html.DisplayFor(model => model.PrecoUnitario)
+            </dd>
+            @*<dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.DataCadastro)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.DataCadastro)
+                </dd>*@
+        </dl>
+    </div>
+
+    <div class="col-md-3">
+        @if (!string.IsNullOrEmpty(Model.Imagem))
+        {
+            <img src="~/img/produtos/@Html.DisplayFor(x => x.Imagem)" class="img-produto" alt="Imagem do Produto @Model.Nome" />
+        }
+    </div>
+
+    <div class="clearfix"></div>
+
+</div>
+
+<form asp-action="Excluir">
+    <input type="hidden" asp-for="IDProduto" />
+    <input type="submit" value="Excluir" class="btn btn-danger mr-10" />
+    <a asp-action="Index" class="btn btn-secondary mr-10">Voltar para a lista</a>
+</form>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $(".btn-nav-produtos").addClass(" active");
+        });
+    </script>
+}

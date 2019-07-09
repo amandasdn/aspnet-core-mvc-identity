@@ -1,0 +1,102 @@
+﻿@model IEnumerable<ControleEstoque.Models.Produto>
+
+@{
+    ViewData["Title"] = "Estoque de Produtos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    System.Globalization.CultureInfo.CurrentCulture = new System.Globalization.CultureInfo("pt-BR");
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <p class="acoes">
+        <a asp-action="Criar" class="btn btn-primary mr-10">Novo Produto</a>
+        <a asp-action="Criar" asp-controller="Movimentacao" class="btn btn-secondary">Adicionar Movimentação</a>
+    </p>
+}
+
+<div class="clearfix"></div>
+
+<div class="box">
+
+    <table id="tabela" class="table table-striped table-bordered" style="width: 100%">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Quantidade)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PrecoUnitario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Categoria)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantidade)
+                    </td>
+                    <td>
+                        R$ @Html.DisplayFor(modelItem => item.PrecoUnitario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Categoria)
+                    </td>
+                    <td class="acoes">
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a asp-action="Editar" class="btn btn-warning" asp-route-id="@item.IDProduto">Editar</a>
+                        }
+
+                        <a asp-action="Detalhes" class="btn btn-secondary" asp-route-id="@item.IDProduto">Detalhes</a>
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a asp-action="Excluir" class="btn btn-danger" asp-route-id="@item.IDProduto">Excluir</a>
+                        }
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $(".btn-nav-produtos").addClass(" active");
+            $('#tabela').DataTable();
+
+            var parametro = getParameterByName("status");
+
+            if (parametro != null && parametro != "") {
+
+                var mensagem = "";
+
+                switch (parametro) {
+                    case "cadastrado": mensagem = "O produto foi cadastrado."; break;
+                    case "alterado": mensagem = "Os dados do produto foram cadastrados."; break;
+                    case "excluido": mensagem = "O produto foi excluído."; break;
+                }
+
+                swal("Sucesso!", mensagem, "success");
+            }
+        });
+    </script>
+}

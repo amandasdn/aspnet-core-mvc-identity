@@ -23,9 +23,13 @@ namespace ControleEstoque.Models
 
         [Required(ErrorMessage = "Digite o preço unitário.")]
         [Display(Name = "Preço Unitário")]
+        //[DisplayFormat(DataFormatString = "{0,c}")]
         public decimal PrecoUnitario { get; set; }
 
         public string Imagem { get; set; }
+
+        [Required(ErrorMessage = "Selecione a categoria do produto.")]
+        public string Categoria { get; set; }
 
         [Required]
         [Display(Name = "Data de Cadastro")]

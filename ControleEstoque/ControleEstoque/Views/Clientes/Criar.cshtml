@@ -25,6 +25,8 @@
             <span asp-validation-for="RazaoSocial" class="text-danger"></span>
         </div>
 
+        <div class="clearfix"></div>
+
         <div class="col-md-5 form-group">
             <label asp-for="CNPJ" class="control-label"></label>
             <input asp-for="CNPJ" class="form-control cnpj" data-mask="00.000.000/0000-00" data-mask-reverser="false" />
@@ -60,14 +62,47 @@
             <input asp-for="Numero" class="form-control frmNumero" />
             <span asp-validation-for="Numero" class="text-danger"></span>
         </div>
-        <div class="col-md-4 form-group">
+
+        <div class="clearfix"></div>
+
+        <div class="col-md-2 form-group">
             <label asp-for="Complemento" class="control-label"></label>
             <input asp-for="Complemento" class="form-control frmComplemento" />
             <span asp-validation-for="Complemento" class="text-danger"></span>
         </div>
-        <div class="col-md-1 form-group">
+        <div class="col-md-3 form-group">
             <label asp-for="UF" class="control-label"></label>
-            <input asp-for="UF" class="form-control frmUF" maxlength="2" />
+            @*<input asp-for="UF" class="form-control frmUF" maxlength="2" />*@
+            <select asp-for="UF" class="form-control frmUF">
+                <option selected disabled></option>
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+                <option value="AP">Amapá</option>
+                <option value="AM">Amazonas</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceará</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espírito Santo</option>
+                <option value="GO">Goiás</option>
+                <option value="MA">Maranhão</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PA">Pará</option>
+                <option value="PB">Paraíba</option>
+                <option value="PR">Paraná</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piauí</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="RO">Rondônia</option>
+                <option value="RR">Roraima</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SP">São Paulo</option>
+                <option value="SE">Sergipe</option>
+                <option value="TO">Tocantins</option>
+            </select>
             <span asp-validation-for="UF" class="text-danger"></span>
         </div>
         <div class="col-md-3 form-group">

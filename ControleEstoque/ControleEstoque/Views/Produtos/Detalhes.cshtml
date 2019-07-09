@@ -1,0 +1,87 @@
+﻿@model ControleEstoque.Models.Produto
+
+@{
+    ViewData["Title"] = "Dados do Produto #" + Model.IDProduto;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@Model.Nome</h1>
+
+<div class="box">
+    <div class="col-md-9">
+        <dl class="row">
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.IDProduto)
+            </dt>
+            <dd class="col-sm-8">
+                #@Html.DisplayFor(model => model.IDProduto)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Categoria)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Categoria)
+            </dd>
+
+        </dl>
+
+        @if (!string.IsNullOrEmpty(Model.Descricao))
+        {
+            <hr />
+
+            <dl class="row">
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Descricao)
+                </dt>
+                <dd class="col-sm-8" style="white-space: pre-line;">@Html.DisplayFor(model => model.Descricao)</dd>
+            </dl>
+        }
+
+        <hr />
+
+        <dl class="row">
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.PrecoUnitario)
+            </dt>
+            <dd class="col-sm-8">
+                R$ @Html.DisplayFor(model => model.PrecoUnitario)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Quantidade)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Quantidade)
+            </dd>
+            @*<dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.DataCadastro)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.DataCadastro)
+                </dd>*@
+        </dl>
+    </div>
+
+    <div class="col-md-3">
+        @if (!string.IsNullOrEmpty(Model.Imagem))
+        {
+            <img src="~/img/produtos/@Html.DisplayFor(x => x.Imagem)" class="img-produto" alt="Imagem do Produto @Model.Nome" />
+        }
+    </div>
+
+    <div class="clearfix"></div>
+
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary mr-10">Voltar para a lista</a>
+    <a asp-action="Editar" class="btn btn-warning" asp-route-id="@Model.IDProduto">Editar</a>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $(".btn-nav-produtos").addClass(" active");
+        });
+    </script>
+}

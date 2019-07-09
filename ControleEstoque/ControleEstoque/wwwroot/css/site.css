@@ -265,3 +265,15 @@ td.acoes {
     background-color: #222;
     color: white;
 }
+
+.box textarea{
+    min-height: 100px;
+    max-height: 300px;
+}
+
+img.img-produto{
+    padding: 10px;
+    border: 1px solid #d0d0d0;
+    width: 100%;
+    background: #f4f4f4;
+}

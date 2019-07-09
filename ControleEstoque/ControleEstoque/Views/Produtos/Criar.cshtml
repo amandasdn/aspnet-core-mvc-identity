@@ -1,0 +1,83 @@
+﻿@model ControleEstoque.Models.Produto
+
+@{
+    ViewData["Title"] = "Cadastrar Produto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="Criar" enctype="multipart/form-data">
+
+    <div class="box">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        @*<p>@TempData["testepreco"]</p>*@
+
+        <div class="col-md-8 form-group">
+            <label asp-for="Nome" class="control-label"></label>
+            <input asp-for="Nome" class="form-control" />
+            <span asp-validation-for="Nome" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-4 form-group">
+            <label asp-for="Categoria" class="control-label"></label>
+            <select asp-for="Categoria" class="form-control">
+                <option disabled selected></option>
+                <option>Equipamentos</option>
+                <option>Escritório</option>
+                <option>Informática</option>
+                <option>Mídias</option>
+                <option>Papéis</option>
+            </select>
+            @*<input asp-for="Categoria" class="form-control" />*@
+            <span asp-validation-for="Categoria" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-12 form-group">
+            <label asp-for="Descricao" class="control-label"></label>
+            <textarea asp-for="Descricao" class="form-control"></textarea>
+            <span asp-validation-for="Descricao" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-4 form-group">
+            <label asp-for="PrecoUnitario" class="control-label"></label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">R$</div>
+                </div>
+                <input asp-for="PrecoUnitario" class="form-control precoJS" onKeyPress="return(moeda(this,'','.',event))" />
+            </div>
+            <span asp-validation-for="PrecoUnitario" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-8 form-group">
+            <label asp-for="Imagem" class="control-label"></label>
+            <input asp-for="Imagem" type="file" class="form-control-file pt-5" name="img" />
+            <span asp-validation-for="Imagem" class="text-danger"></span>
+        </div>
+
+        <div class="clearfix"></div>
+
+    </div>
+
+    <div>
+        <input type="submit" value="Salvar" class="btn btn-success mr-10" />
+        <a asp-action="Index" class="btn btn-secondary">Voltar para a lista</a>
+    </div>
+
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $(document).ready(function () {
+            $(".btn-nav-produtos").addClass(" active");
+        });
+
+    </script>
+
+    <script src="~/js/preco.js"></script>
+}
