@@ -32,6 +32,11 @@ namespace ControleEstoque.Models
         [Display(Name = "E-mail")]
         public string Email { get; set; }
 
+        [Display(Name = "Desconto em compras (%)")]
+        [Range(10, 90, ErrorMessage = "Digite um valor de 10 à 90 % de desconto.")]
+        [Required(ErrorMessage = "Digite a porcentagem de desconto oferecida por este fornecedor.")]
+        public int Desconto { get; set; }
+
         [Required]
         [Display(Name = "Data de Cadastro")]
         [DataType(DataType.DateTime)]

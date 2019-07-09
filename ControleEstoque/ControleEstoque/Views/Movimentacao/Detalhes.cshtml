@@ -56,12 +56,18 @@
             @if (Model.Tipo == 0)
             {
                 <dt class="col-sm-3">
-                @Html.DisplayNameFor(model => model.IDFornecedor)
+                    @Html.DisplayNameFor(model => model.IDFornecedor)
                 </dt>
                 <dd class="col-sm-9">
                     @{ Fornecedor fornecedor = ViewData["Fornecedor"] as Fornecedor; }
 
                     @fornecedor.NomeFantasia
+                </dd>
+                <dt class="col-sm-3">
+                    Desconto (%)
+                </dt>
+                <dd class="col-sm-9">
+                    @fornecedor.Desconto%
                 </dd>
             }
             else if (Model.Tipo == 1)

@@ -82,6 +82,8 @@ namespace ControleEstoque.Data.Migrations
 
                     b.Property<DateTime>("DataCadastro");
 
+                    b.Property<int>("Desconto");
+
                     b.Property<string>("Email");
 
                     b.Property<string>("Endereco")

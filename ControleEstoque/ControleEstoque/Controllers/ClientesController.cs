@@ -60,12 +60,16 @@ namespace ControleEstoque.Controllers
         {
             cliente.DataCadastro = DateTime.Now;
 
-            // if (ModelState.IsValid)
-            // {
-            _context.Add(cliente);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index), new { @status = "cadastrado" });
-            // }
+            try
+            {
+                _context.Add(cliente);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index), new { @status = "cadastrado" });
+            }
+            catch (Exception)
+            {
+
+            }
 
             return View(cliente);
         }

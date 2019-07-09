@@ -111,15 +111,26 @@ namespace ControleEstoque.Controllers
             #endregion
 
             Produto _produto = _context.Produto.Find(movimentacao.IDProduto);
+            
+            movimentacao.DataCadastro = DateTime.Now;
 
             movimentacao.PrecoTotal = _produto.PrecoUnitario * movimentacao.Quantidade;
 
-            movimentacao.DataCadastro = DateTime.Now;
-
-            if(movimentacao.Tipo == 0)
+            if (movimentacao.Tipo == 0)
             {
                 movimentacao.IDCliente = 0;
                 _produto.Quantidade += movimentacao.Quantidade;
+
+                Fornecedor _forn = _context.Fornecedor.Find(movimentacao.IDFornecedor);
+
+                float preco = (float) movimentacao.PrecoTotal;
+                float desconto = _forn.Desconto;
+
+                desconto = desconto / 100;
+
+                desconto = desconto * (float)movimentacao.PrecoTotal;
+
+                movimentacao.PrecoTotal = (decimal) (preco - desconto);
             }
             else if (movimentacao.Tipo == 1)
             {
@@ -139,11 +150,13 @@ namespace ControleEstoque.Controllers
                     return View(movimentacao);
                 }
             }
-            
-            _context.Produto.Update(_produto);
+
+            // return View(movimentacao);
 
             if (ModelState.IsValid)
-            {
+            {                
+                _context.Produto.Update(_produto);
+
                 _context.Add(movimentacao);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index), new { @status = "cadastrada" });

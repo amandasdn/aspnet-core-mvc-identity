@@ -56,16 +56,19 @@ namespace ControleEstoque.Controllers
         // more Detalhes see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Criar([Bind("IDFornecedor,NomeFantasia,RazaoSocial,CNPJ,Telefone, Email,DataCadastro,Endereco,Numero,Complemento,Bairro,Cidade,UF,CEP")] Fornecedor fornecedor)
+        public async Task<IActionResult> Criar([Bind("IDFornecedor,NomeFantasia,RazaoSocial,CNPJ,Telefone, Email,Desconto,DataCadastro,Endereco,Numero,Complemento,Bairro,Cidade,UF,CEP")] Fornecedor fornecedor)
         {
             fornecedor.DataCadastro = DateTime.Now;
 
-            // if (ModelState.IsValid)
-            // {
-            _context.Add(fornecedor);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index), new { @status = "cadastrado" });
-            // }
+            try {
+                _context.Add(fornecedor);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index), new { @status = "cadastrado" });
+            }
+            catch (Exception)
+            {
+
+            }
 
             return View(fornecedor);
         }
@@ -91,7 +94,7 @@ namespace ControleEstoque.Controllers
         // more Detalhes see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Editar(int id, [Bind("IDFornecedor,NomeFantasia,RazaoSocial,CNPJ,Telefone,Email,DataCadastro,Endereco,Numero,Complemento,Bairro,Cidade,UF,CEP")] Fornecedor fornecedor)
+        public async Task<IActionResult> Editar(int id, [Bind("IDFornecedor,NomeFantasia,RazaoSocial,CNPJ,Telefone,Email,Desconto,DataCadastro,Endereco,Numero,Complemento,Bairro,Cidade,UF,CEP")] Fornecedor fornecedor)
         {
             if (id != fornecedor.IDFornecedor)
             {
