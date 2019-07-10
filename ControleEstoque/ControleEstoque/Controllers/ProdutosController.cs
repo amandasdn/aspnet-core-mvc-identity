@@ -121,7 +121,7 @@ namespace ControleEstoque.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Editar(int id, [Bind("IDProduto,Nome,Descricao,Quantidade,PrecoUnitario,Imagem,Categoria,DataCadastro")] Produto produto, IFormFile img)
+        public async Task<IActionResult> Editar(int id, [Bind("IDProduto,Nome,Descricao,Quantidade,PrecoUnitario,Imagem,Categoria,DataCadastro")] Produto produto, IFormFile img, string imagemAtual)
         {
             if (id != produto.IDProduto)
             {
@@ -144,6 +144,10 @@ namespace ControleEstoque.Controllers
                 {
 
                 }
+            }
+            else
+            {
+                produto.Imagem = imagemAtual;
             }
 
             if (ModelState.IsValid)

@@ -17,6 +17,8 @@
         <input type="hidden" asp-for="DataCadastro" />
         <input type="hidden" asp-for="Quantidade" />
 
+        <input type="hidden" id="imagemAtual" name="imagemAtual" value="@Model.Imagem" />
+
         <div class="col-md-8 form-group">
             <label asp-for="Nome" class="control-label"></label>
             <input asp-for="Nome" class="form-control" />

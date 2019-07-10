@@ -125,7 +125,7 @@ namespace ControleEstoque.Controllers
             return View(cliente);
         }
 
-        // GET: Clientes/Excluir/5
+        /*
         public async Task<IActionResult> Excluir(int? id)
         {
             if (id == null)
@@ -143,7 +143,6 @@ namespace ControleEstoque.Controllers
             return View(cliente);
         }
 
-        // POST: Clientes/Excluir/5
         [HttpPost, ActionName("Excluir")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ExcluirConfirmar(int id)
@@ -153,6 +152,7 @@ namespace ControleEstoque.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index), new { @status = "excluido" });
         }
+        */
 
         private bool ClienteExists(int id)
         {

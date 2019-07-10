@@ -46,7 +46,7 @@ namespace ControleEstoque.Controllers
             }
             else if (movimentacao.Tipo == 1)
             {
-                ViewData["Cliente"] = _context.Fornecedor.Find(movimentacao.IDCliente);
+                ViewData["Cliente"] = _context.Cliente.Find(movimentacao.IDCliente);
             }
 
             if (movimentacao == null)

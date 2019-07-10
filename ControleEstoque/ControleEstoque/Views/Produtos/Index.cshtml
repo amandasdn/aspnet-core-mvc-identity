@@ -47,7 +47,14 @@
                         @Html.DisplayFor(modelItem => item.Nome)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Quantidade)
+                        @if (item.Quantidade <= 0)
+                        {
+                            <span class="text-danger">@item.Quantidade</span>
+                        }
+                        else
+                        {
+                            <span class="text-available">@item.Quantidade</span>
+                        }
                     </td>
                     <td>
                         R$ @Html.DisplayFor(modelItem => item.PrecoUnitario)
